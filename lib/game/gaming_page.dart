@@ -18,7 +18,7 @@ class HomePage extends FlameGame {
       Background(),
       Ground(),
       bird = Bird(),
-      PipeGroup(),
+      // PipeGroup(),
     ]);
     interval.onTick = () => add(PipeGroup());
   }

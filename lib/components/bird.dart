@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:gaming_app/game/assets.dart';
 import 'package:gaming_app/game/bird_movement.dart';
+import 'package:gaming_app/game/configuration.dart';
 import 'package:gaming_app/game/gaming_page.dart';
 
 class Bird extends SpriteGroupComponent<BirdMovement>
@@ -19,5 +20,10 @@ class Bird extends SpriteGroupComponent<BirdMovement>
       BirdMovement.up: birdUpFlap,
       BirdMovement.down: birdDownFlap,
     };
+    @override
+    void update(double dt) {
+      super.update(dt);
+      position.y += Config.birdVelocity * dt;
+    }
   }
 }
