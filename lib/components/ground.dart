@@ -1,7 +1,9 @@
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
+import 'package:flame/parallax.dart';
 import 'package:gaming_app/game/assets.dart';
-import 'package:gaming_app/game/game_apps.dart';
+import 'package:gaming_app/game/configuration.dart';
+import 'package:gaming_app/game/gaming_page.dart';
 
 class Ground extends ParallaxComponent<HomePage> {
   Ground();
@@ -18,5 +20,6 @@ class Ground extends ParallaxComponent<HomePage> {
   @override
   void update(double dt) {
     super.update(dt);
+    parallax?.baseVelocity.x = Config.gameSpeed;
   }
 }

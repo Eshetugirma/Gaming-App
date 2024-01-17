@@ -1,7 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:gaming_app/game/assets.dart';
-import 'package:gaming_app/game/game_apps.dart';
+import 'package:gaming_app/game/gaming_page.dart';
 
 class Background extends SpriteComponent with HasGameRef<HomePage> {
   Background();
