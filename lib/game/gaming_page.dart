@@ -1,5 +1,5 @@
-import 'dart:async';
 import 'package:flame/components.dart';
+import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:gaming_app/components/background.dart';
 import 'package:gaming_app/components/bird.dart';
@@ -7,7 +7,7 @@ import 'package:gaming_app/components/ground.dart';
 import 'package:gaming_app/components/pipe_group.dart';
 import 'package:gaming_app/game/configuration.dart';
 
-class HomePage extends FlameGame {
+class HomePage extends FlameGame with TapDetector {
   HomePage();
   late Bird bird;
   Timer interval = Timer(Config.pipeInterval, repeat: true);
@@ -18,9 +18,14 @@ class HomePage extends FlameGame {
       Background(),
       Ground(),
       bird = Bird(),
-      PipeGroup(),
+      // PipeGroup(),
     ]);
     interval.onTick = () => add(PipeGroup());
+  }
+
+  @override
+  void onTap() {
+    bird.fly();
   }
 
   @override
