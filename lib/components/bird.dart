@@ -1,4 +1,6 @@
 import 'package:flame/components.dart';
+import 'package:flame/effects.dart';
+import 'package:flutter/animation.dart';
 import 'package:gaming_app/game/assets.dart';
 import 'package:gaming_app/game/bird_movement.dart';
 import 'package:gaming_app/game/configuration.dart';
@@ -20,6 +22,18 @@ class Bird extends SpriteGroupComponent<BirdMovement>
       BirdMovement.up: birdUpFlap,
       BirdMovement.down: birdDownFlap,
     };
+    @override
+    void fly() {
+      add(
+        MoveByEffect(
+          Vector2(0, Config.gravity),
+          EffectController(duration: 0.2, curve: Curves.decelerate),
+          onComplete: () => current = BirdMovement.down,
+        ),
+      );
+      current = BirdMovement.up;
+    }
+
     @override
     void update(double dt) {
       super.update(dt);
