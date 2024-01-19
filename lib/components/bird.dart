@@ -1,6 +1,7 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:gaming_app/game/assets.dart';
 import 'package:gaming_app/game/bird_movement.dart';
@@ -37,6 +38,7 @@ class Bird extends SpriteGroupComponent<BirdMovement>
       ),
     );
     current = BirdMovement.up;
+    FlameAudio.play(Assets.flying);
   }
 
   @override
@@ -51,9 +53,11 @@ class Bird extends SpriteGroupComponent<BirdMovement>
 
   void reset() {
     position = Vector2(50, gameRef.size.y / 2 - size.y / 2);
+    score = 0;
   }
 
   void gameOver() {
+    FlameAudio.play(Assets.collision);
     gameRef.overlays.add("gameOver");
     gameRef.pauseEngine();
     game.isHit = true;

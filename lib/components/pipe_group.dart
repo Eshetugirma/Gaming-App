@@ -1,7 +1,9 @@
 import 'dart:math';
 
 import 'package:flame/components.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:gaming_app/components/pipe.dart';
+import 'package:gaming_app/game/assets.dart';
 import 'package:gaming_app/game/configuration.dart';
 import 'package:gaming_app/game/gaming_page.dart';
 import 'package:gaming_app/game/pipe_position.dart';
@@ -42,5 +44,6 @@ class PipeGroup extends PositionComponent with HasGameRef<HomePage> {
 
   void updateScore() {
     gameRef.bird.score += 1;
+    FlameAudio.play(Assets.point);
   }
 }
