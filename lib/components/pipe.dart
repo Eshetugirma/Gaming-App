@@ -1,3 +1,4 @@
+import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:flame/flame.dart';
 import 'package:gaming_app/game/assets.dart';
@@ -27,5 +28,6 @@ class Pipe extends SpriteComponent with HasGameRef<HomePage> {
         sprite = Sprite(pipe);
         break;
     }
+    add(RectangleHitbox());
   }
 }

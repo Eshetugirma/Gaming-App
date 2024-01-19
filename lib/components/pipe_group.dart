@@ -18,10 +18,10 @@ class PipeGroup extends PositionComponent with HasGameRef<HomePage> {
 
     addAll([
       Pipe(
-          height: heightMinusGround + spacing - 120,
+          height: heightMinusGround + spacing - 200,
           pipePosition: PipePosition.bottom),
       Pipe(
-          height: heightMinusGround - spacing - 100,
+          height: heightMinusGround - spacing - 50,
           pipePosition: PipePosition.top),
     ]);
   }
@@ -32,6 +32,15 @@ class PipeGroup extends PositionComponent with HasGameRef<HomePage> {
     position.x -= Config.gameSpeed * dt;
     if (position.x <= -10) {
       removeFromParent();
+      updateScore();
     }
+    if (gameRef.isHit) {
+      removeFromParent();
+      gameRef.isHit = false;
+    }
+  }
+
+  void updateScore() {
+    gameRef.bird.score += 1;
   }
 }
