@@ -20,10 +20,10 @@ class PipeGroup extends PositionComponent with HasGameRef<HomePage> {
 
     addAll([
       Pipe(
-          height: heightMinusGround + spacing - 200,
+          height: heightMinusGround + spacing + gameRef.bird.score * 2 - 200,
           pipePosition: PipePosition.bottom),
       Pipe(
-          height: heightMinusGround - spacing - 50,
+          height: heightMinusGround - spacing + gameRef.bird.score * 2 - 50,
           pipePosition: PipePosition.top),
     ]);
   }
