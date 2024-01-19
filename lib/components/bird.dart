@@ -37,8 +37,8 @@ class Bird extends SpriteGroupComponent<BirdMovement>
         onComplete: () => current = BirdMovement.down,
       ),
     );
-    current = BirdMovement.up;
     FlameAudio.play(Assets.flying);
+    current = BirdMovement.up;
   }
 
   @override
@@ -67,5 +67,8 @@ class Bird extends SpriteGroupComponent<BirdMovement>
   void update(double dt) {
     super.update(dt);
     position.y += Config.birdVelocity * dt;
+    if (position.y < 1) {
+      gameOver();
+    }
   }
 }
